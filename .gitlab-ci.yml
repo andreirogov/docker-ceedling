@@ -30,7 +30,7 @@ build:
     # Gcovr version (Git tag)
     GCOVR_TAG: "4.1"
     # Ceedling version
-    CEEDLING_TAG: "0.29.1"
+    CEEDLING_TAG: "$CI_COMMIT_TAG"
   script:
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
