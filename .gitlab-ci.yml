@@ -26,7 +26,7 @@ build:
     entrypoint: [""]
   variables:
     # Ubuntu version
-    UBUNTU_TAG: "19.04@sha256:a65d3401e785fbc3192f0046f68e6487134b70ec9ba79a956fecba9122b39378"
+    UBUNTU_TAG: "18.04@sha256:6b24223d4cefaddcc1eb58724271e5fc9600f6aa7eebec7e7a89e4eaf0e0a365"
     # Gcovr version (Git tag)
     GCOVR_TAG: "4.1"
     # Ceedling version
