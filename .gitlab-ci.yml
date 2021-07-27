@@ -26,20 +26,23 @@ build:
     entrypoint: [""]
   variables:
     # Ubuntu version
-    UBUNTU_TAG: "18.04@sha256:6b24223d4cefaddcc1eb58724271e5fc9600f6aa7eebec7e7a89e4eaf0e0a365"
-    # Gcovr version (Git tag)
-    GCOVR_TAG: "4.1"
+    UBUNTU_VER: "18.04"
+    # GCC version
+    GCC_VER: "8"
     # Ceedling version
-    CEEDLING_TAG: "$CI_COMMIT_TAG"
+    CEEDLING_VER: "$CI_COMMIT_TAG"
+    # Gcovr version (Git tag)
+    GCOVR_VER: "4.1"
   script:
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
     # Build
     - >
       /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile 
-      --build-arg UBUNTU_TAG=$UBUNTU_TAG 
-      --build-arg GCOVR_TAG=$GCOVR_TAG 
-      --build-arg CEEDLING_TAG=$CEEDLING_TAG 
+      --build-arg UBUNTU_VER=18.04 
+      --build-arg GCC_VER=8 
+      --build-arg CEEDLING_VER=$CEEDLING_VER 
+      --build-arg GCOVR_VER=$GCOVR_VER 
       --destination "$CI_REGISTRY_REPO:$CI_COMMIT_TAG" --destination "$CI_REGISTRY_REPO:latest"
 
 test:version:
