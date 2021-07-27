@@ -13,13 +13,14 @@ ARG CEEDLING_TAG=0.29.1
 
 # Install:
 # gcc with libc6-dev (GNU C Library)
-# ruby
-# gcovr
+# ceedling with ruby
+# gcovr with git python-setuptools python-jinja2
 RUN apt-get update && \
     apt-get -y --no-install-recommends install \
       gcc libc6-dev \
       ruby \
-      git python-setuptools && \
+      git python-setuptools python-jinja2 && \
+    gem install ceedling -v ${CEEDLING_TAG} && \
     cd /tmp && \
     git clone --branch ${GCOVR_TAG} --depth 1 https://github.com/gcovr/gcovr.git  && \
     cd gcovr && \
@@ -27,7 +28,6 @@ RUN apt-get update && \
     cd /tmp && \
     rm -r * && \
     apt-get -y --auto-remove purge git && \
-    gem install ceedling -v ${CEEDLING_TAG} && \
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
