@@ -16,7 +16,7 @@ ARG CEEDLING_TAG=0.29.1
 # ruby
 # gcovr
 RUN apt-get update && \
-    apt-get -y --no-install-recommends install && \
+    apt-get -y --no-install-recommends install \
       gcc libc6-dev \
       ruby \
       git python-setuptools && \
