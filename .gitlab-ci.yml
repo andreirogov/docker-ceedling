@@ -39,6 +39,7 @@ build:
     # Build
     - >
       /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile 
+      --customPlatform=linux/386 
       --build-arg UBUNTU_VER=$UBUNTU_VER 
       --build-arg GCC_VER=$GCC_VER 
       --build-arg CEEDLING_VER=$CEEDLING_VER 
