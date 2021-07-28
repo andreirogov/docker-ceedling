@@ -14,7 +14,7 @@ ARG GCOVR_VER
 # Install:
 # gcc with libc6-dev (GNU C Library)
 # ceedling with ruby
-# gcovr with git python-setuptools python-jinja2
+# gcovr with python3-pip
 RUN apt-get update && \
   if [ -z ${GCC_VER} ]; then \
     apt-get -y --no-install-recommends install gcc libc6-dev; \
@@ -31,11 +31,11 @@ RUN apt-get update && \
   else \
     gem install ceedling -v ${CEEDLING_VER}; \
   fi && \
-  apt-get -y --no-install-recommends install pip && \
+  apt-get -y --no-install-recommends install python3-pip && \
   if [ -z ${GCOVR_VER} ]; then \
-    pip install gcovr; \
+    pip3 install gcovr; \
   else \
-    pip install gcovr==${GCOVR_VER}; \
+    pip3 install gcovr==${GCOVR_VER}; \
   fi && \
   apt-get autoremove -y && \
   apt-get clean && \
