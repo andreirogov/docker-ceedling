@@ -9,7 +9,7 @@ ARG GCC_VER=8
 ARG CEEDLING_VER=0.29.1
 
 # Gcovr version (git tag)
-# Pass `--build-arg GCOVR_VER=master` for latest gcovr commit
+# Pass GCOVR_VER=master for latest gcovr commit
 ARG GCOVR_VER=4.1
 
 # Install:
