@@ -1,5 +1,5 @@
 # Use Ubuntu image for linux/386
-ARG UBUNTU_VER=20.04
+ARG UBUNTU_VER=18.04
 FROM i386/ubuntu:${UBUNTU_VER}
 
 # GCC version
