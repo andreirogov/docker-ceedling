@@ -8,9 +8,8 @@ ARG GCC_VER
 # Ceedling version
 ARG CEEDLING_VER
 
-# Gcovr version (git tag)
-# Pass GCOVR_VER=master for latest gcovr commit
-ARG GCOVR_VER=master
+# Gcovr version
+ARG GCOVR_VER
 
 # Install:
 # gcc with libc6-dev (GNU C Library)
@@ -32,14 +31,12 @@ RUN apt-get update && \
   else \
     gem install ceedling -v ${CEEDLING_VER}; \
   fi && \
-  apt-get -y --no-install-recommends install git python-setuptools python-jinja2 && \
-  cd /tmp && \
-  git clone --branch ${GCOVR_VER} --depth 1 https://github.com/gcovr/gcovr.git && \
-  cd gcovr && \
-  python2 setup.py install && \
-  cd /tmp && \
-  rm -r * && \
-  apt-get -y --auto-remove purge git && \
+  apt-get -y --no-install-recommends install pip && \
+  if [ -z ${GCOVR_VER} ]; then \
+    pip install gcovr; \
+  else \
+    pip install gcovr==${GCOVR_VER}; \
+  fi && \
   apt-get autoremove -y && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*

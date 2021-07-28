@@ -3,7 +3,7 @@
 Docker image for [Ceedling](http://www.throwtheswitch.org/ceedling) -- 
 build system targeted at TDD (Test-Driven Development) in C.
 
-This image is built on Ubuntu base and includes:  
+This image is built on Ubuntu base for `linux/386` arch and includes:  
 - [Ceedling](http://www.throwtheswitch.org/ceedling) with 
   [CMock](https://github.com/throwtheswitch/cmock), 
   [Unity](https://github.com/throwtheswitch/unity), 
